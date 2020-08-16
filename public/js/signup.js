@@ -44,9 +44,20 @@ $(document).ready(() => {
       .catch(handleLoginErr);
   }
 
-  function handleLoginErr(err) {
-    console.log(err);
-    $("#alert .msg").text(err.responseJSON);
-    $("#alert").fadeIn(500);
-  }
+  // function handleLoginErr(err) {
+  //   console.log(err);
+  //   $("#alert .msg").text(JSON.stringify (err.responseJSON));
+  //   $("#alert").fadeIn(500);
+  // }
+
+  // This function displays an error message when a field is left blank on the sign up page
+
+function LoginErr () {
+if 
+
+}
+
+
 });
+
+
