@@ -1,0 +1,50 @@
+{{> nav}}
+
+<main>
+    <div class="content row">
+        <div class="container col-xl-5 col-lg-6 col-md-8 col-sm-10">
+            <h1 class="text-center">Create an account</h1>
+            <form class="signup">
+                <div class="form-group">
+                    <label><i><strong> Email</strong></i></label>
+                    <input class="form-control form-control-lg" id="email-input">
+                    <small id="alertTaken" class="form-text text-danger" style="display:none;">
+                        This username has already been taken!
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label><i><strong> First Name</strong></i></label>
+                    <input class="form-control form-control-lg" id="first-name">
+                </div>
+                <div class="form-group">
+                    <label><i><strong> Last Name</strong></i></label>
+                    <input class="form-control form-control-lg" id="last-name">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1"><i><strong> Password</strong></i></label>
+                    <input type="password" class="form-control form-control-lg" id="password-input">
+                </div>
+                <!-- alert is not showing when all the divs are empty  -->
+                <div style="display: none" id="alert" class="alert alert-danger" role="alert">
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    <span class="sr-only">Error:</span> <span class="msg"></span>
+                </div>
+                <button type="submit" class="btn btn-dark rounded-0" id="createNewAccount">Submit</button>
+            </form>
+        </div>
+    </div>
+</main>
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+
+<script src="./js/signup.js"></script>
