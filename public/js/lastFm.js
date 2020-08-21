@@ -2,10 +2,10 @@ console.log("lastFm loaded");
 
 $(document).ready(() => {
   let InputUser = "";
-  let dataArtist;
+  // let dataArtist;
   function clear() {
     $("#searchResults").empty();
-    $("#search-bar").val("");
+    // $("#search-bar").val("");
   }
   function ajaxCall() {
     // Get API key. =
@@ -20,7 +20,7 @@ $(document).ready(() => {
       method: "GET"
     }).then(data => {
       console.log(data);
-      dataArtist = data;
+      // dataArtist = data;
       // $.ajax({
       //   url: "http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=e39c7207b0471e72e0194b83a89dcef6&format=json&artist=Cher&album=Believe",
       //   method: "GET"
