@@ -25,44 +25,53 @@ $(document).ready(() => {
       //   console.log(response);
       // });
       clear();
-      const bootstrapCardEl = $(
-        '<div class="card bg-info" style="width: 16rem;"></div>'
-      );
-      const cardImgEl = $(
-        "<img src=" +
-          data.results.trackmatches.track[0].image[1]["#text"] +
-          "></img>"
-      );
-      console.log(data.results.trackmatches.track[0].image[1]);
-      const cardBodyEl = $(
-        '<div class="card-body">' +
-          "<h5>" +
-          data.results.trackmatches.track[0].artist +
-          "</h5>" +
-          "</div>"
-      );
-      const h5El = $(
-        '<h5 class="card-title">' +
-          data.results.trackmatches.track[0].name +
-          "</h5>"
-      );
-      const bodytemp = $(
-        '<p class="card-text">' +
-          data.results.trackmatches.track[0].url +
-          "</p>"
-      );
-      const bodyPEl = $(
-        '<p class="card-text">' +
-          "LISTENERS:  " +
-          data.results.trackmatches.track[0].listeners +
-          "</p>"
-      );
-      cardBodyEl
-        .append(h5El)
-        .append(bodytemp)
-        .append(bodyPEl);
-      bootstrapCardEl.append(cardImgEl).append(cardBodyEl);
-      $("#searchResults").append(bootstrapCardEl);
+
+      for (let i = 0; i < 40; i++) {
+        const bootstrapCardEl = $(
+          '<div class="card bg-transparent" style="width: 16rem;"></div>'
+        );
+        const cardImgEl = $(
+          "<img src=" +
+            data.results.trackmatches.track[i].image[1]["#text"] +
+            "></img>"
+        );
+        const cardBodyEl = $(
+          '<div class="card-body">' +
+            "<h5>" +
+            data.results.trackmatches.track[i].artist +
+            "</h5>" +
+            "</div>"
+        );
+        const h5El = $(
+          '<h5 class="card-title">' +
+            data.results.trackmatches.track[i].name +
+            "</h5>"
+        );
+        const bodytemp = $(
+          // `<p class="card-text">
+          // <a href=${data.results.trackmatches.track[i].url} target="_blank> 
+          // Listen Here!</a></p>`
+          '<p class="card-text">' +
+            "<a href=" +
+            data.results.trackmatches.track[i].url +
+            " target='_blank'>" +
+            "Listen Here!</a>" +
+            "</p>"
+          // target="_blank" missing
+        );
+        const bodyPEl = $(
+          '<p class="card-text">' +
+            "LISTENERS:  " +
+            data.results.trackmatches.track[i].listeners +
+            "</p>"
+        );
+        cardBodyEl
+          .append(h5El)
+          .append(bodytemp)
+          .append(bodyPEl);
+        bootstrapCardEl.append(cardImgEl).append(cardBodyEl);
+        $("#searchResults").append(bootstrapCardEl);
+      }
     });
   }
   const searchElement = $("#search-bar");
