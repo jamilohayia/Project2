@@ -185,7 +185,7 @@ button:active {
 }
 
 #searchResults {
-    pointer-events: none;
+    /* pointer-events: none; */
     border-color: transparent;
     margin-top: 50px;
 }

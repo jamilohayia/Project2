@@ -33,6 +33,16 @@ nav {
     margin-left: 20px;
 }
 
+#searchResults {
+    border-color: transparent;
+    margin-top: 50px;
+}
+
+#searchResults img {
+    width: 150px;
+    margin-left: 20px;
+    margin-top: 15px;
+}
 
 .content {
     /* display: flex; */
@@ -299,13 +309,6 @@ hr {
     font-weight: 700;
 }
 
-#searchResults {
-    margin-top: 50px;
-}
-
-#searchResults img {
-    width: 200px;
-}
 
 @media only screen and (max-width: 767px) { 
 
