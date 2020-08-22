@@ -7,7 +7,6 @@ var key = config.yt1 + config.yt2 + config.yt3
 
 $(document).ready(function () {
 
-  // correct URL: https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics%2Cplayer&key=AIzaSyAhLIGArlzuL0VabvcS3RfAM1qTBsJcDXE&maxResults=5&regionCode=US&videoCategoryId=10&chart=mostPopular
 
   showTrendingMusicVideos();
 
