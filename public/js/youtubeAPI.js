@@ -7,7 +7,6 @@ var key = config.yt1 + config.yt2 + config.yt3
 
 $(document).ready(function () {
 
-
   showTrendingMusicVideos();
 
   function showTrendingMusicVideos() {
