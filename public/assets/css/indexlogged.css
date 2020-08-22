@@ -6,6 +6,34 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+nav {
+    background-color: rgba(51,57,64, 0.6);
+}
+
+.navbar-nav {
+    flex-direction: row;
+    margin-right: 20px;
+}
+
+.navbar-nav .nav-link, 
+#userNameDisplay, #logout {
+    font-size: 18px;
+}
+
+.navbar-brand {
+    font-size: 30px;
+}
+
+.nav-item {
+    padding: 10px;
+}
+
+.navbar-brand, #userNameDisplay {
+    text-align: center;
+    margin-left: 20px;
+}
+
+
 .content {
     /* display: flex; */
     height: 100vh;
@@ -78,7 +106,6 @@ textarea {
 }
 
 
-
 button img {
     width: 25px;
     float: left;
@@ -105,6 +132,10 @@ button:focus, button:active {
     outline: 0;
     box-shadow: none!important;
 }
+
+#logout, .member-name {
+    color: white;
+} 
 
 .btn:hover {
     background-color: none;
