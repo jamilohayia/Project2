@@ -1,6 +1,7 @@
 console.log("lastFm loaded");
 
 $(document).ready(() => {
+  let lastFMKey = config2.fm1 + config2.fm2 + config2.fm3;
   let InputUser = "";
   // let dataArtist;
   function clear() {
@@ -9,11 +10,11 @@ $(document).ready(() => {
   }
   function ajaxCall() {
     // Get API key. =
-    // var queryURL = "http://ws.audioscrobbler.com/2.0/?api_key=e39c7207b0471e72e0194b83a89dcef6&format=json&method=track.search&track=" + InputUser;
+    // var queryURL = `http://ws.audioscrobbler.com/2.0/?api_key=${lastFMKey}&format=json&method=track.search&track=` + InputUser;
     const queryURL =
-      // "http://ws.audioscrobbler.com/2.0/?api_key=e39c7207b0471e72e0194b83a89dcef6&format=json&method=artist.gettoptracks&artist=" +
-      "http://ws.audioscrobbler.com/2.0/?api_key=e39c7207b0471e72e0194b83a89dcef6&format=json&method=track.search&track=" +
-      InputUser;
+      // `http://ws.audioscrobbler.com/2.0/?api_key=${lastFMKey}&format=json&method=artist.gettoptracks&artist=` +
+      `http://ws.audioscrobbler.com/2.0/?api_key=${lastFMKey}&format=json&method=track.search&track=${InputUser}`
+      ;
       console.log(queryURL);
     $.ajax({
       url: queryURL,
@@ -22,7 +23,7 @@ $(document).ready(() => {
       console.log(data);
       // dataArtist = data;
       // $.ajax({
-      //   url: "http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=e39c7207b0471e72e0194b83a89dcef6&format=json&artist=Cher&album=Believe",
+      //   url: `http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=${lastFMKey}&format=json&artist=Cher&album=Believe`,
       //   method: "GET"
       // }).then(function(response) {
       //   console.log(response);
@@ -33,13 +34,13 @@ $(document).ready(() => {
       for (let i = 0; i < 40; i++) {
         let artist = data.results.trackmatches.track[i].artist;
         const albumUrl =
-          "http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&api_key=e39c7207b0471e72e0194b83a89dcef6&format=json&artist=" +
-          artist;
+          `http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&api_key=${lastFMKey}&format=json&artist=${artist}`
+          ;
         $.get(albumUrl, albumData => {
           const image = albumData.topalbums.album[i].image[1]["#text"];
           
           const bootstrapCardEl = $(
-            "<div class=\"card bg-transparent\" style=\"width: 16rem;\"></div>"
+            "<div class=\"card bg-transparent\" style=\"width: 12rem;\"></div>"
           );
           const cardImgEl = $("<img src=" + image + "></img>");
           const cardBodyEl = $(
@@ -55,9 +56,6 @@ $(document).ready(() => {
               "</h5>"
           );
           const bodytemp = $(
-            // `<p class="card-text">
-            // <a href=${data.results.trackmatches.track[i].url} target="_blank>
-            // Listen Here!</a></p>`
             '<p class="card-text">' +
               "<a href=" +
               data.results.trackmatches.track[i].url +
@@ -75,8 +73,7 @@ $(document).ready(() => {
   }
   function ajaxCall2() {
     const albQueryURL =
-      "http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&api_key=e39c7207b0471e72e0194b83a89dcef6&format=json&artist=" +
-      InputUser;
+      `http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&api_key=${lastFMKey}&format=json&artist=${InputUser}`;
     $.ajax({
       url: albQueryURL,
       method: "GET"
@@ -85,7 +82,7 @@ $(document).ready(() => {
       clear();
       for (let i = 0; i < 40; i++) {
         const bootstrapCardEl = $(
-          "<div class=\"card bg-transparent\" style=\"width: 16rem;\"></div>"
+          "<div class=\"card bg-transparent\" style=\"width: 12rem;\"></div>"
         );
         const cardImgEl = $(
           "<img src=" + data.topalbums.album[i].image[1]["#text"] + "></img>"
@@ -97,9 +94,6 @@ $(document).ready(() => {
           "<h5 class=\"card-title\">" + data.topalbums.album[i].name + "</h5>"
         );
         const bodytemp = $(
-          // `<p class="card-text">
-          // <a href=${data.results.trackmatches.track[i].url} target="_blank>
-          // Listen Here!</a></p>`
           '<p class="card-text">' +
             "<a href=" +
             data.topalbums.album[i].url +
@@ -126,17 +120,5 @@ $(document).ready(() => {
     InputUser = $("#search-bar").val();
     ajaxCall2();
   });
-
-  // const searchElement = $("#search-bar");
-  // $(searchElement).on("keypress", e => {
-  //   if (e.key === "Enter") {
-  //     event.stopPropagation();
-  //     event.preventDefault();
-  //     console.log("User pressed 'Enter'");
-  //     //   keyWord = $("#userInput").val();
-  //     InputUser = $("#search-bar").val();
-  //     console.log("User input:", InputUser);
-  //     ajaxCall();
-  //   }
-  // });
+  
 });
