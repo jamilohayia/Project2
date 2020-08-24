@@ -3,10 +3,9 @@ console.log("lastFm loaded");
 $(document).ready(() => {
   const lastFMKey = config2.fm1 + config2.fm2 + config2.fm3;
   let InputUser = "";
-  // let dataArtist;
+
   function clear() {
     $("#searchResults").empty();
-    // $("#search-bar").val("");
   }
   function ajaxCall() {
     // Get API key. =
