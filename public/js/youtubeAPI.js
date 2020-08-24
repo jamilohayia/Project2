@@ -20,7 +20,7 @@ $(document).ready(() => {
         // $("#youtubeTrending").prepend(header)
         $("#youtubeHeader").css("display", "block");
 
-        for (let i = 0; i < 5; i++) {
+        for (var i = 0; i < 5; i++) {
           const videoItem = response.items;
           console.log(videoItem);
           embedVideo(videoItem);
