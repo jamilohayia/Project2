@@ -1,44 +1,33 @@
 console.log("lastFm loaded");
 
 $(document).ready(() => {
-  let lastFMKey = config2.fm1 + config2.fm2 + config2.fm3;
+  const lastFMKey = config2.fm1 + config2.fm2 + config2.fm3;
   let InputUser = "";
-  // let dataArtist;
+
   function clear() {
     $("#searchResults").empty();
-    // $("#search-bar").val("");
   }
   function ajaxCall() {
     // Get API key. =
     // var queryURL = `http://ws.audioscrobbler.com/2.0/?api_key=${lastFMKey}&format=json&method=track.search&track=` + InputUser;
     const queryURL =
       // `http://ws.audioscrobbler.com/2.0/?api_key=${lastFMKey}&format=json&method=artist.gettoptracks&artist=` +
-      `https://ws.audioscrobbler.com/2.0/?api_key=${lastFMKey}&format=json&method=track.search&track=${InputUser}`
-      ;
-      console.log(queryURL);
+      `https://ws.audioscrobbler.com/2.0/?api_key=${lastFMKey}&format=json&method=track.search&track=${InputUser}`;
+    console.log(queryURL);
     $.ajax({
       url: queryURL,
       method: "GET"
     }).then(data => {
       console.log(data);
-      // dataArtist = data;
-      // $.ajax({
-      //   url: `http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=${lastFMKey}&format=json&artist=Cher&album=Believe`,
-      //   method: "GET"
-      // }).then(function(response) {
-      //   console.log(response);
-      // });
       clear();
       //get picture from album
 
       for (let i = 0; i < 40; i++) {
-        let artist = data.results.trackmatches.track[i].artist;
-        const albumUrl =
-          `https://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&api_key=${lastFMKey}&format=json&artist=${artist}`
-          ;
+        const artist = data.results.trackmatches.track[i].artist;
+        const albumUrl = `https://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&api_key=${lastFMKey}&format=json&artist=${artist}`;
         $.get(albumUrl, albumData => {
           const image = albumData.topalbums.album[i].image[1]["#text"];
-          
+
           const bootstrapCardEl = $(
             "<div class=\"card bg-transparent\" style=\"width: 12rem;\"></div>"
           );
@@ -72,8 +61,7 @@ $(document).ready(() => {
     });
   }
   function ajaxCall2() {
-    const albQueryURL =
-      `https://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&api_key=${lastFMKey}&format=json&artist=${InputUser}`;
+    const albQueryURL = `https://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&api_key=${lastFMKey}&format=json&artist=${InputUser}`;
     $.ajax({
       url: albQueryURL,
       method: "GET"
@@ -82,13 +70,17 @@ $(document).ready(() => {
       clear();
       for (let i = 0; i < 40; i++) {
         const bootstrapCardEl = $(
-          "<div class=\"card bg-transparent\" style=\"width: 12rem;\"></div>"
+          '<div class="card bg-transparent" style="width: 12rem;"></div>'
         );
         const cardImgEl = $(
           "<img src=" + data.topalbums.album[i].image[1]["#text"] + "></img>"
         );
         const cardBodyEl = $(
-          '<div class="card-body">' + "<h5>" + data.topalbums.album[0].artist.name + "</h5>" + "</div>"
+          '<div class="card-body">' +
+            "<h5>" +
+            data.topalbums.album[0].artist.name +
+            "</h5>" +
+            "</div>"
         );
         const h5El = $(
           "<h5 class=\"card-title\">" + data.topalbums.album[i].name + "</h5>"
@@ -120,5 +112,4 @@ $(document).ready(() => {
     InputUser = $("#search-bar").val();
     ajaxCall2();
   });
-  
 });
