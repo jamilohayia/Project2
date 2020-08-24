@@ -2,8 +2,8 @@ require('dotenv').config(); // to be able to access the process.env
 
 module.exports = {
   "development": {
-    "username": process.env.MY_SQL_USER,
-    "password": process.env.MY_SQL_PASSWORD,
+    "username": "root",
+    "password": "h20982896villaz",
     "database": "stella_vybz_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
