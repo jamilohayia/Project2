@@ -73,7 +73,7 @@ $(document).ready(() => {
   }
   function ajaxCall2() {
     const albQueryURL =
-      `http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&api_key=${lastFMKey}&format=json&artist=${InputUser}`;
+      `https://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&api_key=${lastFMKey}&format=json&artist=${InputUser}`;
     $.ajax({
       url: albQueryURL,
       method: "GET"
