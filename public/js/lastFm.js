@@ -13,7 +13,7 @@ $(document).ready(() => {
     // var queryURL = `http://ws.audioscrobbler.com/2.0/?api_key=${lastFMKey}&format=json&method=track.search&track=` + InputUser;
     const queryURL =
       // `http://ws.audioscrobbler.com/2.0/?api_key=${lastFMKey}&format=json&method=artist.gettoptracks&artist=` +
-      `http://ws.audioscrobbler.com/2.0/?api_key=${lastFMKey}&format=json&method=track.search&track=${InputUser}`
+      `https://ws.audioscrobbler.com/2.0/?api_key=${lastFMKey}&format=json&method=track.search&track=${InputUser}`
       ;
       console.log(queryURL);
     $.ajax({
@@ -34,7 +34,7 @@ $(document).ready(() => {
       for (let i = 0; i < 40; i++) {
         let artist = data.results.trackmatches.track[i].artist;
         const albumUrl =
-          `http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&api_key=${lastFMKey}&format=json&artist=${artist}`
+          `https://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&api_key=${lastFMKey}&format=json&artist=${artist}`
           ;
         $.get(albumUrl, albumData => {
           const image = albumData.topalbums.album[i].image[1]["#text"];
@@ -73,7 +73,7 @@ $(document).ready(() => {
   }
   function ajaxCall2() {
     const albQueryURL =
-      `http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&api_key=${lastFMKey}&format=json&artist=${InputUser}`;
+      `https://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&api_key=${lastFMKey}&format=json&artist=${InputUser}`;
     $.ajax({
       url: albQueryURL,
       method: "GET"
