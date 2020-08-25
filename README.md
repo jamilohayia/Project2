@@ -6,7 +6,7 @@
 ## Description
 A social music application where users can search an artist's songs, albums & playlists, then build their own bespoke playlists that they can share with their friends.
 
-Deployed app via Heroku: https://stella-vybz.herokuapp.com/.
+Deployed app via Heroku: https://stellavybezz.herokuapp.com/.
 
 ## Authors & Acknowledgement
 
@@ -15,7 +15,7 @@ Deployed app via Heroku: https://stella-vybz.herokuapp.com/.
 
 ## Visuals
 
-![StellaGif](./public/assets/img/stella.gif)
+![StellaGif](./public/assets/images/stella.gif)
 
 ### Table of Contents
 * [Usage](#Usage)
